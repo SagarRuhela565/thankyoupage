@@ -8,7 +8,7 @@ import ThankLoader from "./ThankLoader";
 
 const EligibilityConfirmation: React.FC = () => {
     const [timeLeft, setTimeLeft] = useState(5 * 60); // 5 minutes in seconds
-     const [loading, setLoading] = useState(false);
+     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         if (timeLeft <= 0) return;
