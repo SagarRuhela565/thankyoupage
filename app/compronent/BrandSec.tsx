@@ -1,4 +1,4 @@
-import ImageLogos from "../assets/images/img-10.webp";
+import ImageLogos from "../assets/images/clearlogos.png";
 import Image from "next/image";
 const BrandSec = () => {
     return (
@@ -8,7 +8,7 @@ const BrandSec = () => {
                     <Image
                         src={ImageLogos}
                         alt="#"
-                        className="mx-auto max-w-full"
+                        className="mx-auto max-w-[70%]"
                     />
                 </div>
             </div>
