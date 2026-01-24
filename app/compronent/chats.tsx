@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import Profile from "../assets/images/profile.png";
 import Image from "next/image";
+import Profile from "../assets/images/profile.png";
 
 const messages = [
   "I have GREAT NEWS for you!",
@@ -19,20 +19,27 @@ type Bubble = {
 export default function Chats() {
   const [bubbles, setBubbles] = useState<Bubble[]>([]);
   const [showInput, setShowInput] = useState(false);
+  const [showInputContent, setShowInputContent] = useState(false);
 
   useEffect(() => {
     let i = 0;
 
     function showNextBubble() {
       if (i >= messages.length) {
-        setTimeout(() => setShowInput(true), 600);
+        setTimeout(() => {
+          setShowInput(true); // show empty input bubble
+
+          setTimeout(() => {
+            setShowInputContent(true); // reveal input content
+          }, 400);
+        }, 600);
         return;
       }
 
-      // Step 1: add empty bubble
+      // Add empty bubble
       setBubbles((prev) => [...prev, { text: messages[i], showText: false }]);
 
-      // Step 2: reveal text
+      // Reveal text
       setTimeout(() => {
         setBubbles((prev) =>
           prev.map((b, index) =>
@@ -51,13 +58,12 @@ export default function Chats() {
   return (
     <div className="flex flex-col min-h-screen font-roboto antialiased">
       <div className="mx-auto mb-10 md:mb-24 flex flex-col px-6 w-full">
-
-        {/* Chat */}
         <div className="flex justify-center mt-4">
-          <div className="mx-auto w-[calc(100%-80px)] max-w-[318px]">
+          <div className="mx-auto w-full md:w-[calc(100%-80px)] max-w-[318px]">
 
+            {/* Bot bubbles */}
             {bubbles.map((bubble, i) => {
-              const isLast = i === bubbles.length - 1;
+              const isLast = i === bubbles.length - 1 && !showInput;
 
               return (
                 <div key={i} className="m-[12px] flex relative">
@@ -69,12 +75,12 @@ export default function Chats() {
                     )}
                   </div>
 
-                  {/* Avatar sticks to latest bubble */}
+                  {/* Avatar follows latest bot message */}
                   {isLast && (
                     <Image
                       src={Profile}
                       alt="Avatar"
-                      className="absolute right-[calc(100%+12px)] -bottom-[5px] min-h-[32px] min-w-[32px] max-h-[32px] max-w-[32px] rounded-full"
+                      className="absolute right-[calc(100%+12px)] -bottom-[5px] h-[32px] w-[32px] rounded-full"
                     />
                   )}
                 </div>
@@ -84,26 +90,28 @@ export default function Chats() {
             {/* Input bubble */}
             {showInput && (
               <div className="m-[12px] flex relative">
-                <div className="inline-block relative p-[12px] bg-[#F0F0F0] rounded-[6px]">
-                  <div className="mx-auto">
-                    <div className="flex flex-col">
-                      <input
-                        inputMode="numeric"
-                        placeholder="Enter Your Birth Year"
-                        className="placeholder:text-[#656565] text-[#000] text-[16px] leading-[22.4px] rounded-[5px] border-[1.4px] border-[#007BEE] bg-[#FFF] p-[12px] w-[140px]"
-                      />
-                      <button className="px-[16px] py-[12px] bg-[#007BEE] text-white text-[16px] font-extrabold leading-[140%] rounded-[320px] mt-[8px]">
-                        Confirm
-                      </button>
+                <div className="inline-block relative p-[12px] bg-[#F0F0F0] rounded-[6px] min-h-[60px]">
+                  {showInputContent && (
+                    <div className="animate-[fadeIn_0.25s_ease-out]">
+                      <div className="flex flex-col">
+                        <input
+                          inputMode="numeric"
+                          placeholder="Enter Your Birth Year"
+                          className="placeholder:text-[#656565] text-[#000] text-[16px] leading-[22.4px] rounded-[5px] border-[1.4px] border-[#007BEE] bg-[#FFF] p-[12px] w-[140px]"
+                        />
+                        <button className="px-[16px] py-[12px] bg-[#007BEE] text-white text-[16px] font-extrabold leading-[140%] rounded-[320px] mt-[8px]">
+                          Confirm
+                        </button>
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </div>
 
-                {/* Avatar stays with input bubble */}
+                {/* Avatar moves here when input appears */}
                 <Image
                   src={Profile}
                   alt="Avatar"
-                  className="absolute right-[calc(100%+12px)] -bottom-[5px] min-h-[32px] min-w-[32px] max-h-[32px] max-w-[32px] rounded-full"
+                  className="absolute right-[calc(100%+12px)] -bottom-[5px] h-[32px] w-[32px] rounded-full"
                 />
               </div>
             )}
@@ -111,7 +119,7 @@ export default function Chats() {
         </div>
       </div>
 
-      {/* Animation */}
+      {/* Global animation */}
       <style jsx global>{`
         @keyframes fadeIn {
           from {
