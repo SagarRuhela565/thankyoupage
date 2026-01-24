@@ -1,12 +1,17 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Inter } from "next/font/google";
+import { Inter, Roboto } from "next/font/google";
 
 const inter = Inter({
   subsets: ["latin"],
   weight: ["100","200","300","400", "500", "600", "700", "800","900"],
   variable: "--font-inter",
+});
+
+const roboto = Roboto({
+  subsets: ["latin"],
+  weight: ["100","200","300","400", "500", "600", "700", "800","900"],
+  variable: "--font-roboto",
 });
 
 export default function RootLayout({
