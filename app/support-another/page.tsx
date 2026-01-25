@@ -3,8 +3,8 @@
 import React, { useEffect, useState } from "react";
 import Profile from "../assets/images/profile.png";
 import Image from "next/image";
-import Chats from "../compronent/chats";
 import Footer from "../compronent/Footer";
+import Chatslib from "../compronent/chatslib";
 
 const messages = [
   "I have GREAT NEWS for you!",
@@ -32,7 +32,7 @@ export default function SupportPage() {
   return (
     <>
       <div className="flex flex-col min-h-screen font-roboto antialiased max-w-[800px] mx-auto">
-        <div className="mx-auto mt-[16px] mb-10 md:mb-24 flex flex-col md:flex-row px-12 sm:px-6 justify-between w-full">
+        <div className="mx-auto mt-[16px] mb-10 md:mb-24 flex flex-col md:flex-row px-6 justify-between w-full">
           <div className="w-full">
             {/* Pre-header */}
             <div className="text-center">
@@ -62,7 +62,7 @@ export default function SupportPage() {
               </div>
 
               {/* Chat */}
-              <Chats />
+              <Chatslib />
             </article>
           </div>
         </div>
