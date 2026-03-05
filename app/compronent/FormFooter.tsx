@@ -4,7 +4,7 @@ export default function FormFooter() {
            <div className="w-full mx-auto px-4 sm:max-w-[540px] md:max-w-[720px] lg:max-w-[960px] xl:max-w-[1140px] 2xl:max-w-[1320px]">
 
 
-                <div className="flex flex-col gap-6">
+                <div className="flex lg:flex-col flex-col-reverse gap-6">
 
                     {/* Disclaimer Text */}
                     <div className="text-[13px] text-[#4d4d4d] leading-[18px] space-y-3">
@@ -68,11 +68,11 @@ export default function FormFooter() {
                     </div>
 
                     {/* Bottom Section */}
-                    <div className="flex flex-col md:flex-row md:items-center md:justify-between text-[13px] text-[#4d4d4d]">
+                    <div className="flex flex-col items-center lg:flex-row lg:items-center lg:justify-between text-[13px] text-[#4d4d4d]">
 
                         <div className="flex items-center gap-2">
                             <p className="cursor-pointer hover:underline">Privacy Policy</p>
-                            <span>|</span>
+                            <span className="opacity-0 lg:opacity-1">|</span>
                             <p className="cursor-pointer hover:underline">Terms of Use</p>
                         </div>
 
