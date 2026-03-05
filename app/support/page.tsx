@@ -31,7 +31,7 @@ export default function SupportPage() {
 
   return (
     <>
-      <div className="flex flex-col min-h-screen font-roboto antialiased max-w-[800px] mx-auto">
+      <div className="flex flex-col  font-roboto antialiased max-w-[800px] mx-auto">
         <div className="mx-auto mt-[16px] mb-10 md:mb-24 flex flex-col md:flex-row px-12 sm:px-6 justify-between w-full">
           <div className="w-full">
             {/* Pre-header */}
