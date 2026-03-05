@@ -19,7 +19,7 @@ export default function MainStepForm() {
     const [step, setStep] = useState(1)
 
     return (
-        <main className={`min-h-screen flex items-center justify-center bg-slate-100 bg-[url('/mainback.png')] ${roboto.className}`}>
+        <main className={`min-h-screen flex items-center justify-center bg-slate-100 ${roboto.className}`}>
 
           <div className="w-full mx-auto px-4 sm:max-w-[540px] md:max-w-[720px] lg:max-w-[960px] xl:max-w-[1140px] 2xl:max-w-[1320px]">
 

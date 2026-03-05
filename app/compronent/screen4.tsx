@@ -37,7 +37,7 @@ export default function Screen4({ next }: ScreenProps) {
                     </ul>
                 </div>
 
-                <p className="text-center text-[13px] mb-8">
+                <p className="text-center text-[18px] mb-8 px-[1rem]">
                     You are close to being matched with a licensed insurance agent!
                 </p>
 
